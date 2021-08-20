@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>PageTitle</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <!--Convert to an external stylesheet-->
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            background: #1E1E1E;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #1E1E1E, #1E1E1E);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #1E1E1E, #1E1E1E);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            color: white;
+            
+        }
+        .bg-red-900{ 
+            background-color: rgb(228, 25, 25);
+        }
+        img{ 
+            width: 300px;
+            text-align: center;
+        }
+        .yy{ 
+            text-align: center;
+            margin: auto;
+            width: 300px;
+            margin-top: 100px;
+        }
+        .t input{ 
+            color: black;
+        }
+    </style>
+
+</head>
+<!-- 
+<div class="yy">
+    <img  src="logo.png" alt="">
+</div> -->
+
+<body class="w-3/4 mx-auto ">
+   <h2 class="text-5xl text-center my-11">Bank <span class="text-red-600"> Mooney </span>  </h2>
+
+   <section>
+        <div class="grid grid-cols-3 gap-3 text-center" > 
+            <div class="bg-blue-800 p-12 rounded">
+                <h2 class="text-3xl">Deposite </h2>
+                <h4  class="text-2xl">$ <span id="deposite-current"> 00 </span> </h4>
+            </div>
+            <div class="bg-green-600 p-12 rounded">
+                <h2 class="text-3xl">Withdraw </h2>
+                <h4  class="text-2xl">$1200</h4>
+            </div>
+            <div class="bg-red-900 p-12 rounded">
+                <h2 class="text-3xl"> Balance </h2>
+                <h4  class="text-2xl">$ <span id="curent-balance"> 00 </span> </h4>
+            </div>
+        </div> 
+        
+      
+   </section>
+
+
+   <section class=" t mt-8">
+    <div class="grid grid-cols-2 gap-3 text-center" > 
+        <div class="bg-blue-800 p-12 rounded">
+            <h2 class="text-3xl"> Please Deposite </h2>
+            <input type="text" id="desposite-input" class="mt-2 border border-gray-400 p-2 rounded" placeholder="Enter Deposite Amound $"> 
+            <button class="bg-green-600 p-2 rounded" id="deposite-button"> Deposite </button>
+        </div>
+
+
+        <div class="bg-green-600 p-12 rounded">
+            <h2 class="text-3xl"> Please Withdraw </h2>
+            <input type="text"  class="mt-2 border border-gray-400 p-2 rounded" placeholder="Enter Withdraw Amound $">
+            <button  class="bg-blue-600 p-2 rounded"> Withdraw </button>
+        </div>
+       
+    </div> 
+   </section>
+
+
+<script>
+    // Get Onlick Event 
+    document.getElementById("deposite-button").addEventListener("click",function()
+    { 
+    // Get input & connection setup with both
+        const depositeInput = document.getElementById("desposite-input");
+        const newDepositeamount = depositeInput.value;
+        const newDepositeAmount = parseFloat(newDepositeamount);
+   // Set text moved passed in input 
+        const depositeTotal = document.getElementById('deposite-current');
+        const previousDepositeamount = depositeTotal.innerText;
+        const previousDepositeAmount = parseFloat(previousDepositeamount);
+    //Calcilation Part 
+        const newDepositeTotal = parseFloat(previousDepositeAmount) + parseFloat(newDepositeAmount);
+        depositeTotal.innerText = newDepositeTotal;
+
+    // Get balace update  
+        const balanceTotal = document.getElementById('curent-balance');
+        const balanceTotalText = balanceTotal.innerText;
+        const previousBalance = parseFloat(balanceTotalText);
+
+        const newBalanceTotal = previousBalance + newDepositeTotal;
+        balanceTotal.innerText = newBalanceTotal;
+
+        depositeInput.value = '';     
+    })
+</script>
+
+</body>
+
+</html>
